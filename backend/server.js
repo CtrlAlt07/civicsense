@@ -254,7 +254,8 @@ app.post('/api/send-complaint', express.json(), async (req, res) => {
 app.use('/api/v1/auth', require('./routes/auth.routes'));
 
 // Define routes for each page
-app.get('/', (req, res) => {
+// Landing page
+app.get(['/', '/landing', '/landing.html'], (req, res) => {
   res.sendFile(path.join(__dirname, '../landing.html'));
 });
 app.get('/login', (req, res) => {
@@ -275,7 +276,9 @@ app.get('/settings', servePage('settings'));
 app.get('/admin', servePage('admin-dashboard'));
 
 // Fallback for SPA routing - serve index.html for any other route
-app.get('*', servePage('landing'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../landing.html'));
+});
 
 // Handle 404 - Not Found
 app.all('*', (req, res) => {
