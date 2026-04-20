@@ -35,7 +35,7 @@ router.get('/:id/assigned-employee', auth, department, async (req, res) => {
     });
   } catch (error) {
     console.error('Error fetching assigned employee:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to fetch assigned employee details',
       details: process.env.NODE_ENV === 'development' ? error.message : undefined
     });

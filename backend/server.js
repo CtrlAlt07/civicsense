@@ -53,10 +53,10 @@ app.use(cors({
     // 1. No origin (like same-origin mobile apps or curl)
     // 2. Exact match in FRONTEND_URL
     // 3. Any .onrender.com domain (production support)
-    if (!origin || 
-        allowedOrigins.includes(origin) || 
-        origin.endsWith('.onrender.com') ||
-        process.env.NODE_ENV === 'development') {
+    if (!origin ||
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.onrender.com') ||
+      process.env.NODE_ENV === 'development') {
       return callback(null, true);
     }
     callback(new Error(`Not allowed by CORS: ${origin}`));
@@ -169,35 +169,35 @@ app.use('/api/v1/predict-department', createProxyMiddleware({
 app.get('/api/v1/reverse-geocode', async (req, res) => {
   const { lat, lon } = req.query;
   if (!lat || !lon) {
-    return res.status(400).json({ 
+    return res.status(400).json({
       status: 'error',
-      message: 'Latitude and longitude are required' 
+      message: 'Latitude and longitude are required'
     });
   }
-  
+
   try {
     const response = await axios.get('https://nominatim.openstreetmap.org/reverse', {
-      params: { 
-        format: 'json', 
-        lat, 
+      params: {
+        format: 'json',
+        lat,
         lon,
         'accept-language': 'en',
         addressdetails: 1,
         zoom: 18
       },
-      headers: { 
+      headers: {
         'User-Agent': 'CivicSenseApp/1.0',
         'Accept': 'application/json'
       }
     });
-    
+
     res.json({
       status: 'success',
       data: response.data
     });
   } catch (error) {
     console.error('Reverse geocoding error:', error.message);
-    res.status(500).json({ 
+    res.status(500).json({
       status: 'error',
       message: 'Failed to fetch address',
       error: process.env.NODE_ENV === 'development' ? error.message : undefined
@@ -232,23 +232,23 @@ app.post('/api/send-complaint', express.json(), async (req, res) => {
     });
 
     const { to, subject, html } = req.body;
-    
+
     if (!to || !subject) {
       return res.status(400).json({ error: 'Missing required fields: to and subject are required' });
     }
 
     const result = await sendComplaintEmail(to, subject, html);
-    
+
     if (result.success) {
       console.log('Email sent successfully:', result.messageId);
-      res.status(200).json({ 
+      res.status(200).json({
         success: true,
         message: 'Email sent successfully',
         messageId: result.messageId
       });
     } else {
       console.error('Email send failed:', result.error);
-      res.status(500).json({ 
+      res.status(500).json({
         success: false,
         error: result.error,
         code: result.code
@@ -260,7 +260,7 @@ app.post('/api/send-complaint', express.json(), async (req, res) => {
       stack: error.stack,
       body: req.body
     });
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
       error: 'Internal server error',
       details: process.env.NODE_ENV === 'development' ? error.message : undefined
@@ -306,7 +306,7 @@ app.all('*', (req, res) => {
 // Global error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  
+
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 

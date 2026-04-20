@@ -1,0 +1,952 @@
+/* ================================================================
+   CivicSense — Ultra-Compact Mobile Stylesheet
+   Target: 375px–768px (iPhone SE → Tablet)
+   Philosophy: Information dense, thumb-friendly, app-grade polish
+   ================================================================ */
+
+/* ── 0. Global Resets ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  html {
+    font-size: 12px !important; /* tighter base — everything scales down */
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    overflow-x: hidden !important;
+  }
+  /* Bottom nav clearance */
+  .main-content,
+  main,
+  .page-content {
+    padding-bottom: 80px !important;
+  }
+  /* Disable heavy desktop animations on mobile for performance */
+  .orb,
+  .floating-orbs {
+    display: none !important;
+  }
+}
+
+/* ── 1. Header ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .premium-header { padding: 0 !important; }
+
+  .header-content {
+    height: 56px !important;
+    padding: 0 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Hide desktop elements */
+  .nav-links,
+  .theme-toggle {
+    display: none !important;
+  }
+
+  /* Logo */
+  .logo-icon {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 10px !important;
+    font-size: 0.85rem !important;
+    flex-shrink: 0;
+  }
+  .logo-text h1 {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+  }
+  .logo-text .subtitle { display: none !important; }
+
+  /* Header action buttons */
+  .action-btn {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 9px !important;
+    font-size: 0.85rem !important;
+  }
+  .profile-avatar {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 9px !important;
+  }
+  .notification-badge {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 0.6rem !important;
+    top: -4px !important;
+    right: -4px !important;
+  }
+
+  /* Hamburger */
+  .mobile-hamburger {
+    display: flex !important;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary, #1a202c);
+    font-size: 1.1rem;
+    border-radius: 9px;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .mobile-hamburger:active { background: rgba(102,126,234,0.12); }
+}
+
+/* ── 2. Main Content Offset ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 70px !important;
+    padding: 0.75rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .main-content {
+    margin-top: 66px !important;
+    padding: 0.6rem !important;
+  }
+}
+
+/* ── 3. Hero / Welcome Section ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1.25rem 1rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 16px !important;
+  }
+  .hero-title {
+    font-size: 1.6rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .hero-subtitle {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+  /* CTA buttons in hero — side by side */
+  .hero-section .d-flex.gap-3 {
+    gap: 0.5rem !important;
+    flex-wrap: wrap !important;
+  }
+  .hero-section .btn {
+    flex: 1 !important;
+    min-width: 120px !important;
+    font-size: 0.8rem !important;
+    padding: 0.55rem 0.75rem !important;
+    border-radius: 10px !important;
+  }
+  /* Right-side stat grid — hide on small mobile, show on tablet */
+  .hero-section .col-lg-5 { display: none !important; }
+}
+
+/* ── 4. Hero Stats Cards ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+    margin-top: 1rem !important;
+  }
+  .stat-card {
+    padding: 0.9rem 0.75rem !important;
+    border-radius: 14px !important;
+  }
+  .stat-icon {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.9rem !important;
+    border-radius: 10px !important;
+    margin-bottom: 0.6rem !important;
+  }
+  .stat-value { font-size: 1.5rem !important; }
+  .stat-label { font-size: 0.75rem !important; }
+}
+@media (max-width: 380px) {
+  .hero-stats { grid-template-columns: 1fr !important; }
+}
+
+/* ── 5. Quick Actions Grid ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .quick-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .action-card {
+    padding: 1.15rem 0.85rem !important;
+    border-radius: 18px !important;
+    text-align: center !important;
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-light);
+  }
+  .action-icon {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.1rem !important;
+    border-radius: 12px !important;
+    margin: 0 auto 0.65rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .action-title {
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .action-description {
+    font-size: 0.73rem !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* ── 6. Advanced Stats ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .advanced-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .advanced-stat-card {
+    padding: 0.9rem 0.75rem !important;
+    border-radius: 14px !important;
+  }
+  .stat-value {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .stat-header { margin-bottom: 0.6rem !important; }
+  .stat-trend {
+    font-size: 0.65rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  .stat-progress { height: 5px !important; }
+}
+@media (max-width: 380px) {
+  .advanced-stats { grid-template-columns: 1fr !important; }
+}
+
+/* ── 7. Section Containers (Impact / Activity / Badges) ────────── */
+@media (max-width: 768px) {
+  .impact-section,
+  .activity-section,
+  .badges-section {
+    padding: 1rem 0.85rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 16px !important;
+  }
+  .section-title {
+    font-size: 1.05rem !important;
+    gap: 0.5rem !important;
+  }
+  .section-title i { font-size: 1rem !important; }
+  .section-header {
+    margin-bottom: 0.85rem !important;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  /* "View All" style buttons in section header */
+  .section-header .btn {
+    font-size: 0.72rem !important;
+    padding: 0.3rem 0.65rem !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* ── 8. Activity Cards ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .activity-card {
+    padding: 0.85rem !important;
+    margin-bottom: 0.6rem !important;
+    border-radius: 13px !important;
+    gap: 0.6rem !important;
+  }
+  .activity-icon {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+    border-radius: 10px !important;
+    flex-shrink: 0;
+  }
+  .activity-card .fw-semibold { font-size: 0.82rem !important; }
+  .activity-card .text-muted,
+  .activity-card small { font-size: 0.7rem !important; }
+}
+
+/* ── 9. Badge Cards ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .badge-card {
+    padding: 0.85rem !important;
+    border-radius: 13px !important;
+    text-align: center;
+  }
+  .badge-card .badge-icon {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.1rem !important;
+    margin: 0 auto 0.5rem !important;
+    border-radius: 12px !important;
+  }
+  .badge-card h6,
+  .badge-card .fw-bold { font-size: 0.78rem !important; }
+  .badge-card small { font-size: 0.68rem !important; }
+}
+
+/* ── 10. Impact Stats ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .impact-card {
+    padding: 0.9rem !important;
+    border-radius: 13px !important;
+  }
+  .impact-stat { padding: 0.5rem !important; }
+  .impact-stat .h2 { font-size: 1.4rem !important; }
+  .impact-stat p { font-size: 0.72rem !important; }
+}
+
+/* ── 11. Glass / Generic Cards ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: 13px !important;
+    padding: 0.9rem !important;
+  }
+}
+
+/* ── 12. Bootstrap Utility Overrides ───────────────────────────── */
+@media (max-width: 768px) {
+  .p-4 { padding: 0.85rem !important; }
+  .p-3 { padding: 0.7rem !important; }
+  .mb-4 { margin-bottom: 0.85rem !important; }
+  .mb-3 { margin-bottom: 0.6rem !important; }
+  .gap-3 { gap: 0.6rem !important; }
+  .gap-4 { gap: 0.85rem !important; }
+  .h2, .h3, h2, h3 { font-size: 1.2rem !important; }
+  .h4, h4 { font-size: 1rem !important; }
+  .small, small { font-size: 0.72rem !important; }
+  .col-lg-5 { display: none !important; } /* hide desktop-only aside columns */
+}
+
+/* ── 13. Report Form Page ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .report-form-container,
+  .form-section {
+    padding: 1rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .form-label {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.3rem !important;
+  }
+  .form-control,
+  .form-select {
+    font-size: 1rem !important;      /* prevents iOS zoom (MUST stay >= 16px base) */
+    padding: 0.55rem 0.75rem !important;
+    border-radius: 10px !important;
+  }
+  #map, .leaflet-container {
+    height: 210px !important;
+    border-radius: 12px !important;
+  }
+  .step-indicator {
+    gap: 0.15rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .step-number {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.72rem !important;
+  }
+  .step-label { display: none !important; }
+  .step-connector { flex: 1 !important; min-width: 12px !important; }
+  .image-upload-area { padding: 1rem 0.75rem !important; }
+  .btn-submit-report {
+    width: 100% !important;
+    padding: 0.75rem !important;
+    font-size: 0.9rem !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* ── 14. My Reports Page ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .reports-grid, .reports-container {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+  .report-card {
+    padding: 1rem !important;
+    border-radius: 14px !important;
+  }
+  .report-card-header {
+    margin-bottom: 0.6rem !important;
+  }
+  .filter-row, .filter-controls {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  .filter-row .btn,
+  .filter-controls .btn { width: 100% !important; font-size: 0.8rem !important; }
+  .report-meta { flex-wrap: wrap; gap: 0.4rem; }
+  .report-meta span { font-size: 0.72rem !important; }
+  .status-badge {
+    font-size: 0.68rem !important;
+    padding: 0.2rem 0.55rem !important;
+    border-radius: 6px !important;
+  }
+}
+
+/* ── 15. Profile Page ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .profile-layout { flex-direction: column !important; }
+  .profile-sidebar {
+    width: 100% !important;
+    margin-bottom: 0.85rem !important;
+    padding: 1rem !important;
+    border-radius: 16px !important;
+  }
+  .profile-avatar-section { text-align: center; }
+  .profile-avatar-section img,
+  .profile-avatar-section .avatar-placeholder {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+  }
+  .profile-stats-row {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+    margin-top: 0.75rem !important;
+  }
+  .profile-stats-row .stat-item {
+    padding: 0.6rem 0.4rem !important;
+    border-radius: 10px !important;
+    text-align: center;
+  }
+  .profile-stats-row .stat-item .value { font-size: 1.1rem !important; }
+  .profile-stats-row .stat-item .label { font-size: 0.65rem !important; }
+  .profile-form .row { flex-direction: column !important; }
+  .profile-form .col-md-6 { width: 100% !important; }
+  .edit-avatar-btn {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* ── 16. Achievements Page ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+  }
+  .achievement-card {
+    padding: 0.85rem 0.7rem !important;
+    border-radius: 14px !important;
+    text-align: center;
+  }
+  .achievement-icon {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.1rem !important;
+    border-radius: 12px !important;
+    margin: 0 auto 0.5rem !important;
+  }
+  .achievement-card h6 { font-size: 0.78rem !important; }
+  .achievement-card p,
+  .achievement-card small { font-size: 0.68rem !important; }
+  .progress-section { padding: 1rem !important; border-radius: 14px !important; }
+  .progress-section h5 { font-size: 0.85rem !important; }
+}
+@media (max-width: 380px) {
+  .achievements-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── 17. Rewards Page ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .rewards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+  }
+  .reward-card {
+    padding: 0.85rem 0.7rem !important;
+    border-radius: 14px !important;
+  }
+  .points-banner {
+    padding: 1.1rem 0.9rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 0.85rem !important;
+  }
+  .points-banner .display-4 { font-size: 2rem !important; }
+  .points-banner h5 { font-size: 0.85rem !important; }
+}
+
+/* ── 18. Login / Signup / Verify ───────────────────────────────── */
+@media (max-width: 768px) {
+  .auth-container,
+  .login-container,
+  .signup-container {
+    padding: 0.75rem !important;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .auth-card {
+    border-radius: 22px !important;
+    padding: 1.75rem 1.25rem !important;
+    margin: 0 !important;
+    width: 100%;
+    max-width: 400px;
+  }
+  .auth-card h2 { font-size: 1.4rem !important; }
+  .auth-form .form-control { font-size: 1rem !important; }
+  .auth-logo { width: 52px !important; height: 52px !important; }
+}
+
+/* ── 19. Touch Targets ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  button, .btn, .dropdown-item { min-height: 42px; }
+  .action-btn, .mobile-hamburger { min-width: 34px; min-height: 34px; }
+  /* Active state feedback */
+  .action-card:active, .stat-card:active,
+  .achievement-card:active, .reward-card:active {
+    transform: scale(0.97) !important;
+    transition: transform 0.1s !important;
+  }
+}
+
+/* ── 20. Slide-out Drawer ──────────────────────────────────────── */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.mobile-nav-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 272px;
+  height: 100%;
+  background: #fff;
+  z-index: 2000;
+  box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+  transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+[data-bs-theme="dark"] .mobile-nav-drawer { background: #1e293b; }
+.mobile-nav-drawer.open { right: 0; }
+
+.mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.9rem;
+  background: linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);
+  flex-shrink: 0;
+}
+.mobile-drawer-user {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.mobile-drawer-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.45);
+}
+.mobile-drawer-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+.mobile-drawer-email {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.78);
+  margin: 0;
+  line-height: 1.2;
+}
+.mobile-drawer-close {
+  background: rgba(255,255,255,0.18);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.mobile-drawer-close:active { background: rgba(255,255,255,0.3); }
+
+.mobile-drawer-nav {
+  padding: 0.6rem 0.6rem;
+  flex: 1;
+}
+.mobile-drawer-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 12px;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.15rem;
+  transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+[data-bs-theme="dark"] .mobile-drawer-nav a { color: #e2e8f0; }
+.mobile-drawer-nav a .drawer-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.mobile-drawer-nav a.active,
+.mobile-drawer-nav a:hover {
+  background: linear-gradient(135deg,rgba(102,126,234,0.13),rgba(118,75,162,0.08));
+  color: #667eea;
+}
+.mobile-drawer-nav a.active .drawer-icon { opacity: 1; }
+
+.mobile-drawer-logout {
+  padding: 0.5rem 0.6rem 0.8rem;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  flex-shrink: 0;
+}
+[data-bs-theme="dark"] .mobile-drawer-logout { border-top-color: rgba(255,255,255,0.07); }
+.mobile-drawer-logout a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 12px;
+  color: #ef4444;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-drawer-logout a:active { background: rgba(239,68,68,0.08); }
+
+/* ── 21. Profile Dropdown (mobile full-width) ──────────────────── */
+@media (max-width: 768px) {
+  .dropdown-menu, #profileDropdown {
+    position: fixed !important;
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    top: 62px !important;
+    width: auto !important;
+    min-width: unset !important;
+    border-radius: 18px !important;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+/* ── 22. Bottom Navigation Bar ─────────────────────────────────── */
+.bottom-nav { display: none; }
+
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(0,0,0,0.07);
+    z-index: 1500;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.25rem;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
+  }
+  [data-bs-theme="dark"] .bottom-nav {
+    background: rgba(15,23,42,0.97);
+    border-top-color: rgba(255,255,255,0.07);
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 4px 8px;
+    text-decoration: none;
+    color: #94a3b8;
+    border-radius: 12px;
+    transition: color 0.18s, background 0.18s;
+    min-width: 48px;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+  [data-bs-theme="dark"] .bottom-nav-item { color: #64748b; }
+
+  /* Active tab — gradient dot indicator above icon */
+  .bottom-nav-item.active {
+    color: #667eea;
+  }
+  .bottom-nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: linear-gradient(90deg,#667eea,#764ba2);
+    border-radius: 0 0 4px 4px;
+  }
+
+  .bottom-nav-item:active { background: rgba(102,126,234,0.09); }
+
+  .bottom-nav-icon {
+    font-size: 1.1rem;
+    transition: transform 0.18s;
+    position: relative;
+  }
+  .bottom-nav-item.active .bottom-nav-icon { transform: translateY(-1px); }
+
+  /* FAB — center Report button */
+  .bottom-nav-fab {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 16px rgba(102,126,234,0.45);
+    margin-top: -18px;
+    border: 2.5px solid white;
+    transition: transform 0.18s, box-shadow 0.18s;
+    flex-shrink: 0;
+  }
+  [data-bs-theme="dark"] .bottom-nav-fab { border-color: #1e293b; }
+  .bottom-nav-fab:active {
+    transform: scale(0.94) translateY(-1px);
+    box-shadow: 0 6px 20px rgba(102,126,234,0.55);
+  }
+  .bottom-nav-fab .bottom-nav-icon {
+    font-size: 1.15rem;
+    transform: none !important;
+    color: white;
+  }
+
+  .bottom-nav-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  .bottom-nav-item.active .bottom-nav-label {
+    color: #667eea;
+    font-weight: 700;
+  }
+
+  /* Notification badge dot */
+  .bottom-nav-badge {
+    position: absolute;
+    top: 1px;
+    right: 4px;
+    width: 7px;
+    height: 7px;
+    background: #ef4444;
+    border-radius: 50%;
+    border: 1.5px solid white;
+  }
+}
+
+/* ── 23. Performance: disable heavy effects on mobile ──────────── */
+@media (max-width: 768px) {
+  .premium-bg::before { animation: none !important; }
+  .logo-icon:hover { transform: none !important; }
+  /* Keep card hover lifts but dial back the scale */
+  .action-card:hover,
+  .stat-card:hover,
+  .activity-card:hover,
+  .badge-card:hover {
+    transform: translateY(-4px) !important;
+  }
+}
+/* ── 24. Footer Responsiveness — Hyper Compact ────────────────── */
+@media (max-width: 768px) {
+  .premium-footer {
+    margin-top: 1rem !important;
+    padding-bottom: 70px !important;
+  }
+  .footer-content {
+    padding: 1rem 0.5rem 0.5rem !important;
+  }
+  .footer-content .row {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem 0.25rem !important;
+    text-align: center !important;
+  }
+  .footer-section h6 {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: 0.02em;
+  }
+  .footer-link {
+    font-size: 0.75rem !important;
+    padding: 0.15rem 0 !important;
+  }
+  .footer-bottom {
+    margin-top: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    font-size: 0.65rem !important;
+  }
+}
+
+/* ── 25. Dashboard & Card Refinements ─────────────────────────── */
+@media (max-width: 768px) {
+  .quick-actions {
+    padding: 0 0.5rem !important;
+    gap: 0.6rem !important;
+  }
+  .action-card {
+    padding: 1rem 0.6rem !important;
+    min-height: 120px !important;
+  }
+  /* Fix cards being "too wide" by adding container padding */
+  .main-content {
+    padding: 0.75rem !important;
+  }
+}
+
+/* ── 26. Auth Pages (Login/Signup) Responsiveness ─────────────── */
+@media (max-width: 768px) {
+  .civic-card {
+    padding: 1.5rem 1.25rem !important;
+    margin: 1rem auto !important;
+    max-width: 95% !important;
+    border-radius: 20px !important;
+  }
+  .civic-title {
+    font-size: 1.5rem !important;
+  }
+  .subtitle {
+    font-size: 0.9rem !important;
+  }
+  .form-section {
+    margin-bottom: 1.25rem !important;
+  }
+  .row > [class*="col-"] {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  .top-bar {
+    padding: 0.5rem 0 !important;
+    font-size: 0.85rem !important;
+  }
+  /* Center buttons on mobile */
+  .btn-primary {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ── 27. Recent Activity Fixes ───────────────────────────────── */
+@media (max-width: 768px) {
+  .activity-section {
+    padding: 1.25rem 1rem !important;
+    margin: 1rem 0 !important;
+  }
+  .activity-section .section-title {
+    font-size: 1.4rem !important;
+  }
+  .activity-section .btn-premium-sm {
+    padding: 6px 16px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Activity Cards */
+  .activity-section .glass-card {
+    padding: 1rem !important;
+    border-radius: 16px !important;
+  }
+  .activity-section .d-flex {
+    flex-wrap: wrap !important;
+  }
+  /* Force vertical layout for status/category on very small screens */
+  .activity-section .flex-grow-1 {
+    width: 100% !important;
+    margin-top: 0.5rem !important;
+  }
+  .activity-section .activity-icon {
+    margin-bottom: 0.5rem !important;
+  }
+  .activity-section h6 {
+    font-size: 1rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .activity-section .badge {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
+  }
+  .activity-section .text-muted.small {
+    font-size: 0.75rem !important;
+    display: block !important;
+    margin-top: 0.25rem !important;
+  }
+  .activity-section .view-details-btn {
+    width: 100% !important;
+    margin-top: 1rem !important;
+    padding: 10px !important;
+  }
+}
+
+/* ── 28. General Section Titles ─────────────────────────────── */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.4rem !important;
+  }
+  .section-header i {
+    font-size: 1.2rem !important;
+  }
+}

@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const department = require('../middleware/department');
-const { 
+const {
   getReports,
   getAssignedReports,
-  getEmployeePerformance 
+  getEmployeePerformance
 } = require('../controllers/reportsController');
 
 // GET /api/reports

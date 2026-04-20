@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const department = require('../middleware/department');
-const { 
-  getUnassigned, 
-  getEmployees, 
-  createEmployee, 
+const {
+  getUnassigned,
+  getEmployees,
+  createEmployee,
   getEmployeeDetails,
   getEmployeeStats,
   getEmployeeActivity,
   getEmployeeReports,
-  deleteEmployee 
+  deleteEmployee
 } = require('../controllers/employeesController');
 
 /**

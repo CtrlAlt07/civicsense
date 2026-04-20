@@ -1351,133 +1351,246 @@
         }
 
         /* Responsive Design */
+        /* Premium Morphing Hamburger */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 3000;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn span {
+            width: 100%;
+            height: 2px;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            transform-origin: center;
+        }
+
+        .hamburger-btn.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); background: var(--neon-blue); }
+        .hamburger-btn.active span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+        .hamburger-btn.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: var(--neon-blue); }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 12, 24, 0.95);
+            backdrop-filter: blur(40px);
+            z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+            padding: 2rem;
+        }
+
+        .mobile-nav-overlay.active { transform: translateY(0); }
+
+        .mobile-nav-overlay .nav-link {
+            font-size: 2rem !important;
+            font-weight: 800 !important;
+            color: white !important;
+            text-decoration: none !important;
+            letter-spacing: -0.02em !important;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-nav-overlay.active .nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mobile-nav-overlay .nav-link:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav-overlay .nav-link:nth-child(2) { transition-delay: 0.2s; }
+        .mobile-nav-overlay .nav-link:nth-child(3) { transition-delay: 0.3s; }
+        .mobile-nav-overlay .nav-cta { transition-delay: 0.4s; }
+
+        .mobile-nav-overlay .nav-cta {
+            margin-top: 1rem;
+            padding: 16px 40px !important;
+            font-size: 1.1rem !important;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-nav-overlay.active .nav-cta { opacity: 1; transform: translateY(0); }
+
+        /* Responsive Improvements */
         @media (max-width: 768px) {
             .navbar {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                transform: none;
-                padding: 10px 20px;
+                top: 15px !important;
+                left: 15px !important;
+                right: 15px !important;
+                width: auto !important;
+                transform: none !important;
+                padding: 12px 24px !important;
+                border-radius: 50px !important;
+                background: rgba(255, 255, 255, 0.08) !important;
+                backdrop-filter: blur(25px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                z-index: 2900;
             }
 
-            .nav-container {
-                gap: 15px;
+            .nav-container { justify-content: space-between !important; width: 100% !important; gap: 0 !important; }
+            .nav-logo { 
+                font-size: 1.4rem !important; 
+                -webkit-text-fill-color: white !important; 
+                color: white !important;
             }
+            .nav-logo i { font-size: 1.6rem !important; }
+            
+            .hamburger-btn { display: flex !important; }
+            .nav-links { display: none !important; }
+            .nav-cta { display: none !important; }
 
-            .nav-links {
-                display: none;
+            .hero { padding: 120px 0 60px !important; }
+            .hero-title { font-size: 2.7rem !important; letter-spacing: -0.02em !important; }
+            
+            .features-grid { 
+                grid-template-columns: 1fr !important;
+                padding: 0 1.25rem !important; 
+                gap: 1.5rem !important; 
             }
+            .feature-card { padding: 2rem 1.5rem !important; width: 100% !important; box-sizing: border-box !important; }
+            .stat-card { padding: 1.5rem 1rem !important; }
 
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .hero-stats {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .goals-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .footer-links {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .phone-container {
-                width: 280px;
-                height: 560px;
-            }
-
+            /* Mobile Modal Compactness */
             .modal-content {
-                margin: 10px;
-                max-width: calc(100% - 20px);
+                width: 95% !important;
+                margin: 20px auto !important;
+                padding: 0 !important;
             }
-
             .modal-header {
-                padding: 2rem 1.5rem 1rem;
+                padding: 1.5rem 1.25rem 0.75rem !important;
             }
-
+            .modal-title {
+                font-size: 1.5rem !important;
+            }
+            .modal-subtitle {
+                font-size: 0.85rem !important;
+            }
             .modal-body {
-                padding: 1.5rem;
+                padding: 1rem 1.25rem 1.5rem !important;
             }
-
+            .get-started-options {
+                gap: 0.85rem !important;
+            }
             .option-card {
-                padding: 1.5rem;
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
+                padding: 0.85rem !important;
+                gap: 1rem !important;
             }
-
             .option-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                width: 45px !important;
+                height: 45px !important;
+                font-size: 1.2rem !important;
+                border-radius: 12px !important;
+            }
+            .option-title {
+                font-size: 1.1rem !important;
+                margin-bottom: 0px !important;
+            }
+            .option-description {
+                font-size: 0.75rem !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .option-arrow {
+                font-size: 0.9rem !important;
             }
         }
 
+            .hero { padding: 100px 0 60px !important; min-height: auto !important; }
+            .hero-container {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+                text-align: center !important;
+                padding: 0 1.5rem !important;
+            }
+
+            .hero-badge { margin: 0 auto 1.5rem !important; }
+            .hero-title { font-size: 3rem !important; line-height: 1.1 !important; }
+            .hero-subtitle { font-size: 1rem !important; margin: 0 auto 2rem !important; }
+            
+            .hero-stats {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+                margin-bottom: 2.5rem !important;
+            }
+            .stat-card { padding: 1.25rem 1rem !important; }
+            .stat-number { font-size: 1.8rem !important; }
+
+            .hero-cta {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                width: 100% !important;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 14px 24px !important;
+                font-size: 1rem !important;
+            }
+
+            .hero-visual {
+                margin-top: 2rem !important;
+                transform: scale(0.85) !important;
+            }
+            .phone-3d { width: 280px !important; height: 560px !important; }
+
+            .mission { padding: 4rem 0 !important; }
+            .mission-title { font-size: 2.2rem !important; }
+            .goals-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+
+            .footer-content { grid-template-columns: 1fr !important; gap: 3rem !important; text-align: center !important; }
+            .footer-brand { margin: 0 auto !important; }
+            .footer-social { justify-content: center !important; }
+            .footer-links { grid-template-columns: repeat(2, 1fr) !important; gap: 2rem 1rem !important; text-align: left !important; }
+            
+            .cta-title { font-size: 2.2rem !important; }
+            .cta-buttons { flex-direction: column !important; width: 100% !important; }
+        }
+
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .cta-title {
-                font-size: 2.5rem;
-            }
-
-            .mission-title {
-                font-size: 2rem;
-            }
-
-            .modal-title {
-                font-size: 1.8rem;
-            }
-
-            .option-title {
-                font-size: 1.2rem;
-            }
+            .hero-title { font-size: 2.4rem !important; }
+            .stat-number { font-size: 1.6rem !important; }
+            .hero-stats { grid-template-columns: 1fr !important; }
+            .footer-links { grid-template-columns: 1fr !important; text-align: center !important; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Particles -->
-    <div class="particles-container" id="particles"></div>
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <a href="#features" class="nav-link" onclick="toggleMobileNav()">Features</a>
+        <a href="#mission" class="nav-link" onclick="toggleMobileNav()">Mission</a>
+        <a href="#contact" class="nav-link" onclick="toggleMobileNav()">Contact</a>
+        <button class="nav-cta" onclick="toggleMobileNav(); openModal('getStartedModal')">Get Started</button>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-city"></i>
+            <div class="nav-logo" onclick="window.location.href='/'" style="cursor: pointer;">
+                <i class="fas fa-city" style="color: var(--neon-blue);"></i>
                 <span>CivicSense</span>
             </div>
             <div class="nav-links">
@@ -1486,6 +1599,12 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <button class="nav-cta" onclick="openModal('getStartedModal')">Get Started</button>
+            
+            <button class="hamburger-btn" id="hamBtn" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -2057,6 +2176,20 @@
                 }, 600);
             });
         });
+
+        // Mobile Nav Toggle
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            const hamBtn = document.getElementById('hamBtn');
+            mobileNav.classList.toggle('active');
+            hamBtn.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
 
         // Add ripple animation CSS
         const style = document.createElement('style');
